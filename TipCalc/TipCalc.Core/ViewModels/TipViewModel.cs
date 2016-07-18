@@ -1,6 +1,8 @@
 ﻿
 
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform;
+using Newtonsoft.Json;
 using TipCalc.Core.Services;
 
 namespace TipCalc.Core.ViewModels
@@ -62,6 +64,8 @@ namespace TipCalc.Core.ViewModels
 
         void Recalcuate()
         {
+            var js = JsonConvert.SerializeObject(this);
+            Mvx.Trace(js);
             Tip = _calculation.TipAmount(SubTotal, Generosity);
         }
     }
